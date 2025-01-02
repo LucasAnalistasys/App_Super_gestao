@@ -23,6 +23,14 @@ Route::get('/contato', function () {
 Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal']);
 Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'sobrenos']);
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato']);
+Route::get('/login', function(){ return 'Login'; });
+
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes',function(){ return 'CLientes'; });
+    Route::get('/fornecedores',function(){ return 'Fornecedores'; });
+    Route::get('/produtos', function(){ return 'Produtos'; });
+});
+
 
 
 //nome, categoria, assunto, mensagem
