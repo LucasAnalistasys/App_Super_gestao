@@ -20,9 +20,9 @@ Route::get('/contato', function () {
 
 */
 
-Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal']);
-Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'sobrenos']);
-Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato']);
+Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.index');
+Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'sobrenos'])->name('site.sobrenos');
+Route::get('/formulario_de_contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
 Route::get('/login', function(){ return 'Login'; });
 
 Route::prefix('/app')->group(function(){
