@@ -9,13 +9,16 @@ class ListaFornecedores extends Controller
     public function index(){
         $fornecedores = [
             0 => ['id' => '1' ,'nome'=> 'Fornecedor 1', 'status' => 'N', 'cnpj' => '000.000.000.00/0000' ],
-            1 => ['id' => '2' ,'nome' => 'Fornecedor 2', 'status' => 'S', 'cnpj' => '']
+            1 => ['id' => '2' ,'nome' => 'Fornecedor 2', 'status' => 'S', 'cnpj' => ''],
+            2 => ['id' => '3' ,'nome' => 'Fornecedor 3', 'status' => 'S']
         ];
 
         // If Ternário - condiçao se ? se verdade : se falso
-        $msg =  @isset($fornecedores[1]['cnpj']) ? 'CNPJ Informado' : 'CNPJ Não Informado';
-        echo $msg;
 
+        /*
+            $msg =  @isset($fornecedores[1]['cnpj']) ? 'CNPJ Informado' : 'CNPJ Não Informado';
+            echo $msg;
+        */
         return view('app.fornecedores.lista', compact('fornecedores'));
     }
 }
