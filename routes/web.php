@@ -49,13 +49,11 @@ Caso uma rota seja chamada, redireciona para outra Rota. Pode ser feita de 2 for
     })->name('site.rota2');
 
 */
-Route::get('/rota1', function(){
-    echo 'Rota 1';
-})->name('site.rota1');
+Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class,'teste'] )->name('teste');
 
-Route::get('/rota2', function(){
+/* Route::get('/rota2', function(){
     return redirect()->route('site.rota1');
-})->name('site.rota2');
+})->name('site.rota2'); */
 
 /* Route::redirect('/rota2','/rota1'); *Exemplo de Redirecionamento com callback**/
 
