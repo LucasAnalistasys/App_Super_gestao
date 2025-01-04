@@ -35,7 +35,7 @@ Route::get('/login', function(){ return 'Login'; });
 
 Route::prefix('/app')->group(function(){
     Route::get('/clientes',function(){ return 'CLientes'; });
-    Route::get('/fornecedores',function(){ return 'Fornecedores'; });
+    Route::get('/fornecedores',[\App\Http\Controllers\FornecedorController::class,'index']);
     Route::get('/produtos', function(){ return 'Produtos'; });
 });
 
