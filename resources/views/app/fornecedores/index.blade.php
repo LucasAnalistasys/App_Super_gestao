@@ -22,29 +22,53 @@
 
 {{-- if/else em blade --}}
 
-@if(count($fornecedores) > 0 && count($fornecedores) < 10)
+@if(isset($fornecedores) && count($fornecedores) > 0 && count($fornecedores) < 10)
     <h3> Existem alguns fornecedores</h3>
-@elseif(count($fornecedores) > 10)    
-    <h3>Existem vários fornecedores</h3>
-@else
-    <h3> Não há fornecedores</h3>
+    @elseif(isset($fornecedores) && count($fornecedores) > 10)    
+        <h3>Existem vários fornecedores</h3>
+    @else
+        <h3> Não há fornecedores</h3>
 @endif     
 
+@php
+    /* 
+        if(isset($variavel)){} => retorna true se a variavel estiver definida
+    */
+@endphp
+{{-- usando @isset --}}
 {{-- Uso de negação com '!' e @unless --}}
 
-Fornecedor: {{$fornecedores [0]['nome']}}
-<br/>
-Status: {{$fornecedores [0]['status']}}
+@isset($fornecedores)
+
+    Fornecedor: {{$fornecedores [0]['nome']}}
+    <br/>
+    Status: {{$fornecedores [0]['status']}}
+
+@endisset
 
 {{-- if/else com ! para negação, transformando o false em true --}}
 
-@if( !($fornecedores[0]['status'] == 'S') )
-    <h3>Fornecedor Inativo</h3>
-@endif
+@isset($forncedores [0])
+
+    @if((!($fornecedores[0]['status'] == 'S'))  )
+        <h3>Fornecedor Inativo</h3>
+    @endif
+
+@endisset
 
 {{-- @unless executa a negação invertendo o valor da condicional --}}
 
-@unless(($fornecedores[0]['status'] == 'S'))
-    <h3> Fornecedor Inativo</h3>
-@endunless
+@isset($fornecedores [0])
+
+    @unless($fornecedores[0]['status'] == 'S')
+        <h3> Fornecedor Inativo</h3>
+    @endunless
+
+@endisset
+
+
+
+
+
+
 
