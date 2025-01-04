@@ -28,4 +28,23 @@
     <h3>Existem vários fornecedores</h3>
 @else
     <h3> Não há fornecedores</h3>
-@endif        
+@endif     
+
+{{-- Uso de negação com '!' e @unless --}}
+
+Fornecedor: {{$fornecedores [0]['nome']}}
+<br/>
+Status: {{$fornecedores [0]['status']}}
+
+{{-- if/else com ! para negação, transformando o false em true --}}
+
+@if( !($fornecedores[0]['status'] == 'S') )
+    <h3>Fornecedor Inativo</h3>
+@endif
+
+{{-- @unless executa a negação invertendo o valor da condicional --}}
+
+@unless(($fornecedores[0]['status'] == 'S'))
+    <h3> Fornecedor Inativo</h3>
+@endunless
+
