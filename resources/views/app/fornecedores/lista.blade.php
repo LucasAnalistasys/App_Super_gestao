@@ -20,78 +20,63 @@
 
 @endempty
  --}}
+
+
 @isset($fornecedores)
+
+    <!-- Na condição do for, esta sendo checado se o índice de cada item do array ainda está definido.
+    No caso de não estar mais definido, retorna false e encerra o loop for -->
+
+    @for($i = 0 ; isset($fornecedores[$i]) ; $i++) 
+
+        Fornecedor: {{$fornecedores [$i]['nome']}}
+        <br/>
+
+        Status: {{$fornecedores [$i]['status']}}
+        <br/>
+
+        <!-- verifica se Variável testada está definida (isset)
+            ou
+            Verifica se Variável testada retorna valor null
+        -->
+        CNPJ: {{ $fornecedores [$i]['cnpj'] ?? 'Não Preenchido'}}
+        
+        <br/>
+        TELEFONE: ({{$fornecedores[$i]['ddd']}}) {{$fornecedores[$i]['telefone']}}
+        <br/>
+
+        {{-- O bloco switch é usado para determinar o estado do fornecedor com base no DDD. 
+        Cada caso representa um DDD específico e exibe o estado correspondente. Se nenhum DDD corresponder, o default será exibido. --}}
+        ESTADO:
+
+        @switch($fornecedores[$i]['ddd'])
+
+        
+            @case('31')
+                BELO HORIZONTE - MG
+                @break
+
+        
+            @case('11')
+                SÃO PAULO - SP
+                @break
+
+            @case('32')
+                JUIZ DE FORA - MG
+                @break
+
     
-    Fornecedor: {{$fornecedores [0]['nome']}}
-    <br/>
-    Status: {{$fornecedores [0]['status']}}
-    <br/>
-    CNPJ: {{$fornecedores [0]['cnpj']}}
-    <br/>
-    ________________________________________________
-    <br/><br/>
+            @default
+                Estado não Identificado
 
-    Fornecedor: {{$fornecedores [1]['nome']}}
-    <br/>
-    Status: {{$fornecedores [1]['status']}}
-    <br/>
+        @endswitch
+        <!-- Finaliza a estrutura switch -->
+        <hr>
+        
+    @endfor    
 
-    @isset($fornecedores[1]['cnpj'])
-
-        CNPJ: {{ $fornecedores [1]['cnpj'] ?? 'Não Preenchido'}}
-
-        @empty($fornecedores[1]['cnpj'])
-            Vazio
-        @endempty    
-
-    @endisset
-  
-
-    <br/><br/>
-    ________________________________________________
-
-    <br/><br/>
-
-    Fornecedor: {{$fornecedores [2]['nome']}}
-    <br/>
-
-    Status: {{$fornecedores [2]['status']}}
-
-    <br/>
-
-    CNPJ: {{ $fornecedores [2]['cnpj'] ?? 'Não Preenchido'}}
-    <!-- verifica se Variável testada está definida (isset)
-         ou
-         Verifica se Variável testada retorna valor null
-    -->
-    <br/>
-    TELEFONE: ({{$fornecedores[2]['ddd']}}) {{$fornecedores[2]['telefone']}}
-<br/>
-    ESTADO:
-    <!-- Estrutura switch para identificar o estado com base no DDD do terceiro fornecedor -->
-    @switch($fornecedores[2]['ddd'])
-
-        <!-- Caso o DDD seja '31', identifica como Belo Horizonte - MG -->
-        @case('31')
-            BELO HORIZONTE - MG
-            @break
-
-        <!-- Caso o DDD seja '11', identifica como São Paulo - SP -->
-        @case('11')
-            SÃO PAULO - SP
-            @break
-
-        <!-- Caso o DDD seja '32', identifica como Juiz de Fora - MG -->
-        @case('32')
-            JUIZ DE FORA - MG
-            @break
-
-        <!-- Se o DDD não for identificado, exibe "Estado não Identificado" -->
-        @default
-            Estado não Identificado
-
-    @endswitch
-    <!-- Finaliza a estrutura switch -->
 @endisset     
+
+
     
 
