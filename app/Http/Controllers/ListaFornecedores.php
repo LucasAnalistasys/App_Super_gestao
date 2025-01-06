@@ -25,7 +25,7 @@ class ListaFornecedores extends Controller
             2 => ['id' => '3' ,
                   'nome' => 'Fornecedor 3', 
                   'status' => 'S',
-                  'ddd' => '11',
+                  'ddd' => '32',
                   'telefone' => '2222-2222']
         ];
 
@@ -38,3 +38,4 @@ class ListaFornecedores extends Controller
         return view('app.fornecedores.lista', compact('fornecedores'));
     }
 }
+
