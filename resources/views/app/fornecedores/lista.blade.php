@@ -196,5 +196,62 @@
 @endisset
 
 
+<h4> USO DO FORELSE </h4>
+
+    <!-- O forelse é uma estrutura de repetição especial no Blade, usada para percorrer arrays ou coleções. 
+     Ele combina a funcionalidade do foreach com a possibilidade de tratar cenários onde o array ou 
+     coleção esteja vazio. Se os dados existirem, ele funciona como um foreach; caso contrário, 
+     o bloco @ empty é executado. Essa abordagem evita verificações extras antes de iterar. -->
+
+ @forelse ($fornecedores as $indice => $fornecedor)
+
+    Fornecedor: {{$fornecedor['nome']}}
+        <br/>
+
+        Status: {{$fornecedor['status']}}
+        <br/>
+
+        <!-- Verifica se a variável 'cnpj' está definida e não é null. Se estiver, exibe o valor; 
+        caso contrário, exibe a mensagem 'Não Preenchido'. -->
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Não Preenchido'}}
+        
+        <br/>
+        TELEFONE: ({{$fornecedor['ddd']}}) {{$fornecedor['telefone']}}
+        <br/>
+
+        {{-- O bloco switch é usado para determinar o estado do fornecedor com base no DDD. 
+        Cada caso representa um DDD específico e exibe o estado correspondente. Se nenhum DDD corresponder, 
+        o default será exibido. --}}
+
+        ESTADO:
+
+        @switch($fornecedor['ddd'])
+
+            @case('31')
+                BELO HORIZONTE - MG
+                @break
+
+            @case('11')
+                SÃO PAULO - SP
+                @break
+
+            @case('32')
+                JUIZ DE FORA - MG
+                @break
+
+            @default
+                Estado não Identificado
+
+        @endswitch
+        <!-- Finaliza a estrutura switch -->
+        <hr>
+    @empty
+        Nenhum item encontrado
+ @endforelse            
+
+
+
+
+
     
 

@@ -29,6 +29,7 @@ class ListaFornecedores extends Controller
                   'telefone' => '2222-2222']
         ];
 
+
         // If Ternário - condiçao se ? se verdade : se falso
 
         /*
