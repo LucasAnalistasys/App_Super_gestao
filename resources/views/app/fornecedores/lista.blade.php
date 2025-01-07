@@ -196,15 +196,29 @@
 @endisset
 
 
-<h4> USO DO FORELSE </h4>
+<h4> USO DO FORELSE / Variável $loop </h4>
 
     <!-- O forelse é uma estrutura de repetição especial no Blade, usada para percorrer arrays ou coleções. 
      Ele combina a funcionalidade do foreach com a possibilidade de tratar cenários onde o array ou 
      coleção esteja vazio. Se os dados existirem, ele funciona como um foreach; caso contrário, 
      o bloco @ empty é executado. Essa abordagem evita verificações extras antes de iterar. -->
 
+     <!-- A variável $loop é automaticamente disponibilizada em estruturas de repetição no Blade, como foreach e forelse. 
+     Ela oferece informações úteis sobre o estado atual da iteração, permitindo maior controle e personalização. 
+     
+     Exemplos de propriedades da variável $loop:
+     - $loop->iteration: Indica o número atual da iteração (1 para a primeira, 2 para a segunda, etc.).
+     - $loop->first: Retorna true se for a primeira iteração.
+     - $loop->last: Retorna true se for a última iteração.
+     - $loop->count: Retorna o total de itens na coleção ou array.
+     
+     Essas propriedades são úteis para aplicar classes CSS específicas, adicionar separadores ou outros comportamentos 
+     dependendo da posição do item na iteração. -->
+
  @forelse ($fornecedores as $indice => $fornecedor)
 
+    Iteração atual: {{$loop->iteration}}
+    <br/>
     Fornecedor: {{$fornecedor['nome']}}
         <br/>
 
@@ -244,10 +258,43 @@
 
         @endswitch
         <!-- Finaliza a estrutura switch -->
+        
+        @if($loop->first)
+            <br/>
+            Primeiro registro
+        @endif 
+
+        @if($loop->last)
+        
+            <br/>
+            
+             Último registro
+            
+            <br/>
+
+           Número de Registros: {{$loop->count}}
+
+        @endif
         <hr>
+
     @empty
         Nenhum item encontrado
- @endforelse            
+ @endforelse   
+
+ <h4>Escapando tag de impressão</h4>
+
+        <!-- Basta colocar o '@' antes da das chaves -->
+        Fornecedor: @{{$fornecedor['nome']}}
+        <br/>
+
+        Status: @{{$fornecedor['status']}}
+        <br/>
+
+        
+        CNPJ: @{{ $fornecedor['cnpj'] ?? 'Não Preenchido'}}
+
+
+
 
 
 
