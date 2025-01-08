@@ -12,30 +12,17 @@
             <!-- Adicionado o atributo name a cada campo do form -->
             <div class="informacao-pagina">
                 <div class="contato-principal">
-                    <!-- Metodo GET <form action = @{{ route('site.contato') }} method="get"> -->
-                    <form action = {{ route('site.contato') }} method="post">
-                        @csrf
-                        <input name="nome" type="text" placeholder="Nome" class="borda-preta">
-                        <br>
-                        <input name="telefone" type="text" placeholder="Telefone" class="borda-preta">
-                        <br>
-                        <input name="email" type="text" placeholder="E-mail" class="borda-preta">
-                        <br>
-                        <select name="motivo" class="borda-preta">
-                            <option value="">Qual o motivo do contato?</option>
-                            <option value="1">Dúvida</option>
-                            <option value="2">Elogio</option>
-                            <option value="3">Reclamação</option>
-                        </select>
-                        <br>
-                        <textarea name="mensagem" class="borda-preta">Preencha aqui a sua mensagem</textarea>
-                        <br>
-                        <button type="submit" class="borda-preta">ENVIAR</button>
-                    </form>
+                  
+                  @component('site.layouts._components.form_contato', ['classe' => 'borda-preta']) <!-- o parâmetro do array associativo cria uma variavel chamada classe, e atribui a ela o valor contendo a cor da borda, puxando a classe css da mesma -->
+                       <!-- Enviado essas informações, elas podem ser recuperadas no componente
+                       através do uso do @{{ $slot }} -->
+                    <p>Deixe sua Mensagem e responderemos o mais breve possível.</p>
+                    <p>Tempo médio de resposta: 48 Horas</p>
+                  @endcomponent  
                 </div>
             </div>  
         </div>
 
         @include('site.layouts._partials.rodape')
-
+        
 @endsection
