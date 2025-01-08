@@ -27,7 +27,8 @@ o apelido da Rota permanece o mesmo, evitando ter de mudar a Rota no código int
 
 Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.index');
 Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'sobrenos'])->name('site.sobrenos');
-Route::get('/formulario_de_contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
+Route::get('/formulario_de_contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato'); // Metodo GET
+Route::post('/formulario_de_contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato'); // Metodo POST
 Route::get('/login', function(){ return 'Login'; });
 
 
