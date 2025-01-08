@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <title>Super Gestão - Sobre Nós</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href={{ asset('css/estilo_basico.css')}}>
-    </head>
+@extends('site.layouts.basico') <!-- O Extends irá usar um layout ou template para imprimir um bloco de codigo vindo de outra blade -->
 
-    <body>
+<!-- O Section encapsula o conteúdo para ser passado como parâmetro para o template.-->
+
+
+@section('titulo', 'Sobre Nós') <!-- Nesse caso, está sendo passado um parâmetro para alterar o título do site.
+A Sintaxe será Section('Nome da variável', 'Valor atribuido a variável') -->
+
+@section('conteudo') <!-- Aqui a section tem um fechamento, pois está encapsulando todo conteúdo dentro dela que será passado para o layout ou template -->
+
         <div class="topo">
 
             <div class="logo">
@@ -51,5 +52,6 @@
                 <img src="{{ asset('img/mapa.png')}}">
             </div>
         </div>
-    </body>
-</html>
+
+@endsection        
+   
