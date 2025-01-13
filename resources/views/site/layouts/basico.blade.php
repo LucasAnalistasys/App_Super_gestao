@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>
-
-        Super Gestão - @yield('titulo') <!-- Aqui o Yield está alterando o title da página de acordo com o valor de 'titulo', 
+         <!-- Aqui o Yield está alterando o title da página de acordo com o valor de 'titulo', 
         que é uma variável podendo alterar o titulo da página baseado nessa variável --> 
-        
+
+        <title>
+        Super Gestão - @yield('titulo') 
         </title>
+        
         <meta charset="utf-8">
         <link rel="stylesheet"  href={{ asset('css/estilo_basico.css')}} >
         
