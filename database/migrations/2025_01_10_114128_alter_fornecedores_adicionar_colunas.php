@@ -27,7 +27,7 @@ return new class extends Migration
         Schema::table('fornecedores', function (Blueprint $table) {
             //$table->dropColumn('uf');   -- Exlcuindo colunas individualmente do banco de dados
             //$table->dropColumn('email');
-            $table->string(['uf' , 'email']); // excluindo multiplas colunas com s
+            $table->dropColumn(['uf' , 'email']); // excluindo multiplas colunas com s
         });
     }
 };

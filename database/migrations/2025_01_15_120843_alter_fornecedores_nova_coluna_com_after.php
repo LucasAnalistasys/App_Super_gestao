@@ -5,7 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{
+{   
+
+    // Comandos Php Artisan Migrate:Status, Reset, Refresh, Fresh
+    // Status: mostra o status das Migrations no Terminal
+    // Reset: Executa o Rollback de todas as Migrations
+    // Refresh: Executa o Rollback de Todas Migrations e executa o Migrate depois
+    // Fresh: Dropa os Objetos das tables sem Rollback e executa o Migrate depois
     /**
      * Run the migrations.
      */

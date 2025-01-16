@@ -39,6 +39,7 @@ return new class extends Migration
         Schema::table('produtos' , function (Blueprint $table){
             $table->dropColumn(['preço_venda', 'estoque_minimo', 'estoque_maximo']);
         });
+        
     }
 
     /**
@@ -54,7 +55,7 @@ return new class extends Migration
             $table->dropColumn(['preço_venda', 'estoque_minimo', 'estoque_maximo']);
         });
 
-        Schema::dropIfExists('produtos_filiais');
+        Schema::dropIfExists('produto_filiais');
 
         Schema::dropIfExists('filiais');
     }
