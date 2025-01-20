@@ -18,3 +18,5 @@ class Fornecedor extends Model
     protected $table = 'fornecedores'; // Aqui pode se passar o nome da tabela que deverá ser usada no DB, podendo ser qualquer nome.
     protected $fillable = ['nome', 'site', 'email', 'uf']; // O $fillable define quais atributos podem ser preenchidos em massa com o método create() ou update()
 }
+
+
