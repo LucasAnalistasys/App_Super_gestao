@@ -174,3 +174,13 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
   }
 
 */
+
+//Where pode ser encadeado com vários wheres. Exemplo:
+// $contatos = SiteContato::where('nome', '<>' , 'Fernando')->whereIn('motivo_contato', [1 , 2])->whereBetween('created_at', ['2020-08-01 00:00:00' , '2020-08-31 23:59:59'])->get(); 
+//Basta encaixar os wheres com '->', que nesse caso representa o 'and'. Ou seja, todas as condições devem ser verdadeira ou retorna um false.
+
+
+//Tambem pode ser usando o encadeamento com o 'or'
+//$contatos = SiteContato::where('nome' , '<>' , 'Fernando')->orWhereIn('motivo_contato' , [1 , 2])->orWhere('telefone' , 'like' , '(31)%')->get();    
+// Basta adicionar o 'or' antes de cada where, e diferente do and, basta que uma das condições seja satisfeita para retornar true.
+           
