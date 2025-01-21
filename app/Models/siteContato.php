@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class siteContato extends Model
 {
+    public $timestamps = true;
     // Tinker
     // php artisan tinker - Abre o shell do tinker no terminal
     // $contato = new App\Models\SiteContato(); - Aqui foi instanciado um objeto da classe Model
@@ -176,7 +177,7 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
 */
 
 //Where pode ser encadeado com vários wheres. Exemplo:
-// $contatos = SiteContato::where('nome', '<>' , 'Fernando')->whereIn('motivo_contato', [1 , 2])->whereBetween('created_at', ['2020-08-01 00:00:00' , '2020-08-31 23:59:59'])->get(); 
+//$contatos = SiteContato::where('nome', '<>' , 'Fernando')->whereIn('motivo_contato', [1 , 2])->whereBetween('created_at', ['2020-08-01 00:00:00' , '2020-08-31 23:59:59'])->get(); 
 //Basta encaixar os wheres com '->', que nesse caso representa o 'and'. Ou seja, todas as condições devem ser verdadeira ou retorna um false.
 
 
@@ -184,3 +185,14 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
 //$contatos = SiteContato::where('nome' , '<>' , 'Fernando')->orWhereIn('motivo_contato' , [1 , 2])->orWhere('telefone' , 'like' , '(31)%')->get();    
 // Basta adicionar o 'or' antes de cada where, e diferente do and, basta que uma das condições seja satisfeita para retornar true.
            
+//Where null - $contatos = SiteContato::whereNull('updated_at')->get(); para achar registros onde esteja com dados nulos.
+// Where not null - $contatos = SiteContato::whereNotNull('updated_at')->get(); para achar registros onde esteja com dados não nulos.
+
+//Where Date - $contatos = SiteContato::whereDate('created_at' , '2025-01-15')->get(); Para achar registros por data especifica
+//Where Day - $contatos = SiteContato::whereDay('created_at' , '15')->get();  Para achar registros pelo dia;
+//Where Month - $contatos = SiteContato::whereMonth('created_at' , '01')->get(); Para achar registros pelo Mês.
+//Where Month - $contatos = SiteContato::whereYear('created_at' , '2025')->get();  Para achar registros pelo ano.
+//Where Time - $contatos = SiteContato::whereTime('created_at' , '=' , '13:00:34')->get(); Para achar registros pelo horário.
+
+//Busca de registros em grupos - $contato =SiteContato::where(function($query){ $query -> where('nome','Lucas')->orWhere('nome','Jairo'); })->orWhere(function($query){ $query -> whereIn('motivo_contato' , [1,2])->orWhereBetween('id',[4,6]); })->get(); 
+// Usando a seguinte sintaxe - $var = ($classe)::where(function ($query){ $query -> (...)})->where(function ($query){ $query -> (...)}) - Dessa forma o filtro do where irá analisar dois grupos de condições.
