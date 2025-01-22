@@ -196,3 +196,17 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
 
 //Busca de registros em grupos - $contato =SiteContato::where(function($query){ $query -> where('nome','Lucas')->orWhere('nome','Jairo'); })->orWhere(function($query){ $query -> whereIn('motivo_contato' , [1,2])->orWhereBetween('id',[4,6]); })->get(); 
 // Usando a seguinte sintaxe - $var = ($classe)::where(function ($query){ $query -> (...)})->where(function ($query){ $query -> (...)}) - Dessa forma o filtro do where irá analisar dois grupos de condições.
+
+
+//$contatos = SiteContato::all(); - Retorna todos os Registros;
+//$contatos = SiteContato::orderBy('nome')->get(); Retorna Registros ordenados de forma ascendente, baseado na coluna passada.
+//$contatos = SiteContato::orderBy('nome', 'desc')->get(); Retorna Registros ordenados de forma descendente, baseado na coluna passada.
+
+
+//Collection - E o retorno de um builder com o metodo get(). Com uma collection, pode ser usados outros métodos.
+// first() - Retorna o primeiro registro.
+// last() - Retorna o último Registro.
+// reverse() - Inverte a ordem dos dados dentro dos Registros.
+// toArray() - Converte a coleção para um conjunto.
+// toJson()- Converte a coleção para Json.
+// pluck($coluna) - Monta uma colection contendo apenas os dados da coluna selecionada. Pode se usar outra chave como um array associativo : pluck($coluna , $chave).
