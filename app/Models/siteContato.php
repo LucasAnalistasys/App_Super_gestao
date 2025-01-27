@@ -258,3 +258,35 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
   * Não dispara os eventos Eloquent.
   * Mais eficiente para exclusões em massa.
 */
+
+/*
+- delete():
+  * Chamado em uma instância do modelo já carregada.
+  * Exemplo:
+    $fornecedor = Fornecedor::find(1);
+    $fornecedor->delete();
+  * Dispara os eventos Eloquent (deleting, deleted).
+  * Ideal para exclusão individual ou quando verificações são necessárias.
+
+- destroy():
+  * Chamado diretamente no modelo, aceitando um ou mais IDs.
+  * Exemplo:
+    Fornecedor::destroy(1);
+    Fornecedor::destroy([1, 2, 3]);
+  * Não carrega as instâncias do modelo.
+  * Não dispara os eventos Eloquent.
+  * Mais eficiente para exclusões em massa.
+*/
+
+/*
+- SoftDeletes:
+  * Marca registros como "excluídos" sem removê-los do banco, utilizando a coluna `deleted_at`.
+  * Para ativar, adicione a trait `SoftDeletes` no modelo.
+  * Registros com `deleted_at` preenchido são ignorados nas consultas padrão.
+
+  * Exemplo de uso:
+    - No modelo: `use SoftDeletes;`
+    - Na migração: `$table->softDeletes();`
+*/
+
+
