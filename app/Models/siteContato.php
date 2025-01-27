@@ -210,3 +210,21 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
 // toArray() - Converte a coleção para um conjunto.
 // toJson()- Converte a coleção para Json.
 // pluck($coluna) - Monta uma colection contendo apenas os dados da coluna selecionada. Pode se usar outra chave como um array associativo : pluck($coluna , $chave).
+
+/* 
+   Atualizar registros - Use o metodo find() para encontrar o registro que deseja alterar. 
+   Basta instanciar o registro em uma variavel pelo Tinker, e modificar cada atributo do registro. Use save() para persistir os dados para o DB.
+*/
+
+/* 
+   Certifique-se de que o modelo está configurado com $fillable: No seu modelo, você deve definir o array $fillable para listar os atributos que podem ser preenchidos em massa:
+   protected $fillable = ['nome', 'site', 'uf', 'email'];
+   Atualizar registros - tambem pode ser usado o método fill(), passando um array associativo para modificar os atributos em massa.  
+   Exemplo: $fornecedor3 -> fill(['nome' => 'Fastway LTDA' , 'site' => 'fastwaymarketing.com.br' , 'uf' => 'MG' , 'email' => 'fastawymd@digital']);  
+*/
+
+
+/* 
+   Atualizar Registros - Pode ser usado com filtros para multiplas trocas de objetos através do método update(). Exemplo:
+   Fornecedor::whereIn('id' , [1 , 2])->update(['nome' => 'teste' , site => 'teste.com.br']);
+*/
