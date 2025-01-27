@@ -228,3 +228,33 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
    Atualizar Registros - Pode ser usado com filtros para multiplas trocas de objetos através do método update(). Exemplo:
    Fornecedor::whereIn('id' , [1 , 2])->update(['nome' => 'teste' , site => 'teste.com.br']);
 */
+
+/* 
+   Deletar Registros - Primeiro se instancia o objeto com find(), e depois basta usar o delete() para poder deletar o registro do DB.
+   Exemplo: 
+   $fornecedorDel = Fornecedor::find(4); // instaciamos o id 4 na variavel fornecedorDel
+   $fornecedorDel -> delete(); // Deletamos o registro da DB
+
+   Tambem pode ser usado de forma mais direta com método where():
+   $fornecedorDel = Fornecedor::where ('id' , '4')->delete();   // selecionamos o registro com where() e passamos o delete.
+
+*/
+
+/*
+- delete():
+  * Chamado em uma instância do modelo já carregada.
+  * Exemplo:
+    $fornecedor = Fornecedor::find(1);
+    $fornecedor->delete();
+  * Dispara os eventos Eloquent (deleting, deleted).
+  * Ideal para exclusão individual ou quando verificações são necessárias.
+
+- destroy():
+  * Chamado diretamente no modelo, aceitando um ou mais IDs.
+  * Exemplo:
+    Fornecedor::destroy(1);
+    Fornecedor::destroy([1, 2, 3]);
+  * Não carrega as instâncias do modelo.
+  * Não dispara os eventos Eloquent.
+  * Mais eficiente para exclusões em massa.
+*/
