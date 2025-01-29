@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        //Para chamar apenas um seeder, basta informar no php artisan a classe a ser usada. Exemplo: php artisan db:seed --class=SiteContatoSeeder
+
         $this->call(FornecedorSeeder::class);
+        $this->call(SiteContataoSeeder::class);
 
         User::factory()->create([
             'name' => 'Test User',
