@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\siteContato;
+use App\Models\SiteContato;
+
 
 class SiteContatoSeeder extends Seeder
 {
@@ -14,13 +15,17 @@ class SiteContatoSeeder extends Seeder
      */
     public function run(): void
     {
-        $contato = new siteContato();
+        /*$contato = new siteContato();
         $contato-> nome = 'Contato100';
         $contato-> telefone = '1111-1111';
         $contato-> email = 'Contato100@contato.com.br';
         $contato-> motivo_contato = 1;
         $contato-> mensagem = 'Teste contato 1';
         $contato->save();
+        */
+
+        SiteContato::factory(100)->create();
+
 
     }
 }

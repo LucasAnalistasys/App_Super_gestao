@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class siteContato extends Model
 {
     public $timestamps = true;
+    use HasFactory;
+
     // Tinker
     // php artisan tinker - Abre o shell do tinker no terminal
     // $contato = new App\Models\SiteContato(); - Aqui foi instanciado um objeto da classe Model
