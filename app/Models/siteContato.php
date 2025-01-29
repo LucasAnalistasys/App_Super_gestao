@@ -290,3 +290,11 @@ $contatos = SiteContato::where('id', '1' , '>')->get();
 */
 
 
+// withTrashed() - Recupera todos registros da tabela, incluindo os excluidos no Soft Delete.
+// onlyTrashed() - Recupera apenas registros removidos pelo Soft Delete.
+/* restore() - Restaura um registro que estava deletado pelo Soft Delete. 
+   Ex: $fornecedores = Fornecedor::withTrashed()->get(); // Para recuperar uma lista com todos registros, incluindo os excluidos
+       $fornecedores[$posição_registro] -> restore(); Informando a posição do registro, usa-se o restore() para restaurar o objeto. 
+*/
+
+
