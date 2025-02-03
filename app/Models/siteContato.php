@@ -10,6 +10,7 @@ class siteContato extends Model
 {
     public $timestamps = true;
     use HasFactory;
+    protected $fillable = ['nome' , 'telefone' , 'email' , 'motivo_contato' , 'mensagem'];
 
     // Tinker
     // php artisan tinker - Abre o shell do tinker no terminal
